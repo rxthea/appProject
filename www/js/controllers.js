@@ -17,36 +17,14 @@ angular.module('starter.controllers', [])
     }
 })
 
-vm.signup = function() {
-    $ionicLoading.show();
-    Stamplay.User.signup(vm.user)
-    .then(function(user) {
-      $rootScope.user = user;
-      $state.go("tab.dash");
-    }, function(error) {
-      errorHandler({
-        title : "<h4>A Valid Email and Password is Required</h4>"
-      })
-      $ionicLoading.hide();
-    })
-}
-
-.controller('SignUpCtrl', function($scope, SignupService, $ionicPopup, $state) {
-    $scope.data = {};
- 
-    $scope.signup = function() {
-        SignupService.signupUser($scope.data.name, $scope.data.username), $scope.data.pa.success(function(data) {
-            $state.go('tab.dash');
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'SignUp failed!',
-                template: 'Please check your credentials!'
-            });
-        });
-    }
+.controller('SignInCtrl', function($scope, $state) {
+  
+  $scope.signIn = function(user) {
+    console.log('SignUp', user);
+    $state.go('tabs.dash');
+  };
+  
 })
-
-
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

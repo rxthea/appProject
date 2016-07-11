@@ -40,13 +40,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('signup', {
       url: '/signup',
       templateUrl: 'templates/signup.html',
-      controller: "AccountController",
-      controllerAs : "tab-account"
-})
-
-
-
-  
+      controller: 'SignInCtrl'
+    })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -97,6 +92,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/signup');
+  $urlRouterProvider.otherwise('/login');
 
 });

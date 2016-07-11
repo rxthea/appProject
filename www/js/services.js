@@ -24,50 +24,6 @@ angular.module('starter.services', [])
     }
 })
 
-.factory('AccountService', ["$q", function($q) {
-  return {
-    currentUser : function() {
-      var def = $q.defer();
-      Stamplay.User.currentUser()
-        .then(function(response) {
-          if(response.user === undefined) {
-            def.resolve(false);
-          } else {
-            def.resolve(response.user);
-          }
-        }, function(error) {
-          def.reject();
-        }
-      )
-      return def.promise;
-    }
-  }
-}])
-
-.service('SignupService', function($q) {
-    return {
-        signupUser: function(name, un, pw) {
-            var deferred = $q.defer();
-            var promise = deferred.promise;
- 
-            if (name == 'user' && pw == 'secret') {
-                deferred.resolve('Welcome ' + name + '!');
-            } else {
-                deferred.reject('Wrong credentials.');
-            }
-            promise.success = function(fn) {
-                promise.then(fn);
-                return promise;
-            }
-            promise.error = function(fn) {
-                promise.then(null, fn);
-                return promise;
-            }
-            return promise;
-        }
-    }
-})
-
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
